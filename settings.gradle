@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "timetable-feature"
 //include ':app'
-include ':timetable-api'
-include ':timetable-impl'
+include ':protocol'
+include ':impl'
