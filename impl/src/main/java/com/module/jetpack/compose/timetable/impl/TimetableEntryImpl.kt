@@ -9,7 +9,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import com.module.jetpack.compose.common.Destinations
 import com.module.jetpack.compose.common.di.injectedViewModel
+import com.module.jetpack.compose.common.find
 import com.module.jetpack.compose.data.api.LocalDataProvider
+import com.module.jetpack.compose.detail.api.DetailEntry
 import com.module.jetpack.compose.timetable.api.TimetableEntry
 import com.module.jetpack.compose.timetable.impl.di.DaggerTimetableComponent
 import com.module.jetpack.compose.timetable.impl.ui.TimetableScreen
@@ -31,6 +33,8 @@ class TimetableEntryImpl @Inject constructor() : TimetableEntry() {
         }
 
         TimetableScreen(viewModel, onUserSelected = {
+            val detail = destinations.find<DetailEntry>().startDestinationInParent(startDestination())
+            navController.navigate(detail)
         })
     }
 }

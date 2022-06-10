@@ -6,5 +6,7 @@ abstract class TimetableEntry : ComposableFeatureEntry {
 
     final override val featureRoute = "timetable-feature"
 
-    fun destination(): String = featureRoute
+    fun route() = featureRoute
+    fun startDestination() = "$featureRoute/"
+    fun startDestinationInParent(parentName: String) = "$parentName$featureRoute/"
 }

@@ -3,6 +3,7 @@ package com.module.jetpack.compose.timetable.impl.ui
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,23 +13,22 @@ import androidx.compose.ui.unit.dp
 import com.module.jetpack.compose.timetable.impl.TimetableViewModel
 
 @Composable
-inline fun TimetableScreen(
+fun TimetableScreen(
     viewModel: TimetableViewModel,
-    crossinline onUserSelected: (userId: String) -> Unit
+    onUserSelected: () -> Unit
 ) {
     Box {
-        Empty()
+        TimetableBody(onUserSelected)
     }
 }
 
 @Composable
-fun Empty() {
-
+fun TimetableBody(onUserSelected: () -> Unit) {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(
-            text = "Timetable",
-            color = Color.Gray,
-            modifier = Modifier.padding(bottom = 30.dp)
-        )
+        Button(onClick = {
+            onUserSelected.invoke()
+        }) {
+            Text(text = "Detail")
+        }
     }
 }
